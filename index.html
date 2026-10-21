@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>stupID - Smart Photos, Stupid Easy</title>
+    <meta name="description" content="A professional AI-powered ID photo consultant and editor. Transform a single photo into various professional styles for passports, resumes, and licenses." />
+    <script>
+      // Defensive fix for browser environments and iframe executors assigning window.fetch
+      (function() {
+        try {
+          let _fetch = window.fetch ? window.fetch.bind(window) : undefined;
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return _fetch;
+            },
+            set: function(fn) {
+              _fetch = fn;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          console.warn('Failed to define fetch accessor:', e);
+        }
+      })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'cambria': ['Cambria', 'Cochin', 'Georgia', 'Times', 'Times New Roman', 'serif'],
+            },
+            colors: {
+              grey: {
+                950: '#1c1c18',
+                900: '#2b2b24',
+                800: '#3a3a32',
+                700: '#49493f',
+                600: '#636356',
+              },
+              gold: {
+                300: '#dec366',
+                400: '#cca43b',
+                500: '#b89333',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body class="bg-grey-900 text-slate-200 antialiased h-screen w-screen overflow-hidden font-cambria select-none">
+    <div id="root" class="h-full w-full"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
