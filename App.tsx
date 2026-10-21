@@ -11,6 +11,7 @@ import ControlPanel from './components/ControlPanel';
 import ComplianceModal from './components/ComplianceModal';
 import ExportModal from './components/ExportModal';
 import CropModal from './components/CropModal';
+import BeforeAfterViewer from './components/BeforeAfterViewer';
 import * as geminiService from './services/geminiService';
 import { 
   Upload, 
@@ -482,23 +483,14 @@ const App: React.FC = () => {
             </div>
           </header>
 
-          <main className="flex-1 relative overflow-hidden bg-grey-950 flex items-center justify-center p-3 sm:p-6">
-            <div className="relative shadow-2xl rounded overflow-hidden border-2 sm:border-4 border-slate-300/80 aspect-[3/4] h-full max-h-[460px] sm:max-h-[540px] w-auto bg-black/40">
-              <img src={state.currentImage} alt="ID Preview" className="w-full h-full object-cover" />
-              {(state.processingState === ProcessingState.PROCESSING || state.processingState === ProcessingState.CHECKING_COMPLIANCE) && (
-                <div className="absolute inset-0 bg-grey-950/85 backdrop-blur-sm flex flex-col items-center justify-center gap-3 z-10 px-4 text-center">
-                  <Loader2 size={36} className="text-gold-400 animate-spin" />
-                  <p className="text-gold-400 font-medium text-sm animate-pulse">{loadingMessage}</p>
-                </div>
-              )}
-            </div>
-            <button 
-              onClick={handleReset} 
-              className="absolute top-4 right-4 p-2 bg-grey-800/90 rounded-full text-slate-400 hover:text-white hover:border-gold-400/50 border border-grey-700 backdrop-blur-md transition-all shadow-lg" 
-              title="Reset to Original Photo"
-            >
-              <RotateCcw size={16} />
-            </button>
+          <main className="flex-1 relative overflow-hidden bg-grey-950 flex items-center justify-center">
+            <BeforeAfterViewer
+              originalImage={state.originalImage}
+              currentImage={state.currentImage}
+              isProcessing={state.processingState === ProcessingState.PROCESSING || state.processingState === ProcessingState.CHECKING_COMPLIANCE}
+              loadingMessage={loadingMessage}
+              onReset={handleReset}
+            />
           </main>
 
           <div className="bg-grey-900 border-t border-grey-800 flex flex-col flex-shrink-0">
