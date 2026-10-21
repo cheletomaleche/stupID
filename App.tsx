@@ -317,7 +317,7 @@ const App: React.FC = () => {
         <div className="flex-1 flex flex-col relative animate-in fade-in duration-500 overflow-y-auto">
           <div className="w-full p-6 flex justify-between items-center z-10">
             <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-              stup<span className="text-gold-400">ID</span> EASY
+              stup<span className="text-gold-400">ID</span>
             </h1>
           </div>
 
@@ -380,7 +380,7 @@ const App: React.FC = () => {
         <div className="flex-1 flex flex-col relative animate-in slide-in-from-right duration-300">
           <div className="absolute top-0 left-0 w-full p-4 sm:p-6 flex justify-between items-center z-10">
             <button onClick={handleStartOver} className="text-xl font-bold tracking-tight text-white hover:opacity-80 flex items-center gap-2">
-              <Home size={20} className="text-gold-400" /> stup<span className="text-gold-400">ID</span> EASY
+              <Home size={20} className="text-gold-400" /> stup<span className="text-gold-400">ID</span>
             </button>
             <div className="flex items-center gap-2">
               <button 
